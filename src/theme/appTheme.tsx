@@ -1,8 +1,9 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 
 const { width, height } = Dimensions.get('window');
-
+const {top} = useSafeAreaInsets();
 export const styles = StyleSheet.create({
 //**********PAGINA 1**********
     container: {
@@ -136,5 +137,62 @@ export const styles = StyleSheet.create({
     },
     textoTap2:{
         fontSize: height/39,  fontWeight: 'bold', textAlign: 'center', marginLeft: width/3
+    },
+
+    //MEMU LATERAL
+    image:{
+        width: width/5.5,
+        height: height/10.5,
+        borderRadius: 1,
+        marginBottom: height/100,
+        marginTop: height/100,
+        marginHorizontal: width/100,
+        borderColor:'black'
+    },
+    imageView:{
+        backgroundColor: '#4318A2',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: width,
+        height: height/6.5,
+    },
+    menuContainer:{
+        marginVertical: height/80,
+        marginHorizontal: width/20
+    },
+    menuItem:{
+        marginVertical: height/90
+    },
+    menuTexto:{
+        fontSize: height/45,
+        color: 'black'
+    },
+    
+    //VENTANA BUSCADOR
+    buscador:{
+        flex:1,
+        marginTop: height/100,
+        marginHorizontal: width/80
+    },
+    //SEARCH INPUT
+    containerSearch:{
+        backgroundColor: 'red',
+        //marginTop: top+10
+    },
+    subSearch:{
+        backgroundColor: '#F3F1F3',
+        borderRadius: width/50,
+        height: height/40,
+        paddingHorizontal: width/80,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    textInput:{
+        flex: 1,
+        fontSize: width/20
+    },
+    IconSize:{
+        width: width/80
     },
 });

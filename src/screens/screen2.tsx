@@ -1,28 +1,35 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import React, { useState } from 'react'
 import { Alert, Dimensions, FlatList, Image, KeyboardAvoidingView, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Buscador } from '../components/Buscador';
 import { useProductos } from '../hooks/useProductos'
+import { RootStackParams } from '../navigator/StackNavigator';
 import { styles } from '../theme/appTheme';
 
-export const screen2 = () => {
-    const { width, height } = Dimensions.get('window');
-    const [contador, setContador] = useState(1);
+interface Props extends StackScreenProps<RootStackParams, 'screen2'> { };
+
+export const screen2 = ({ route, navigation }: Props) => {
+
     const {
         categorias,
         setCategorias,
         images,
         setImages,
     } = useProductos();
+    const params = route.params;
+    const [contador, setContador] = useState(1);
+    const { width, height } = Dimensions.get('window');
+    const [carItem, setcarItem] = useState([]);
+    
     return (
-        <SafeAreaView style={styles.constainer2}>
+        /*<SafeAreaView style={styles.constainer2}>
                 <View style={styles.describe}>
                     <Image
                         style={styles.carritoMorado}
                         source={require('../image/carritoMorado.png')}
                     />
                     <Text style={styles.texto1}>Resumen del Carrito</Text>
-                {/*COMPRA DE FUNKO 1*/}
             </View>
 
             <FlatList
@@ -67,7 +74,10 @@ export const screen2 = () => {
                 )}
                 //horizontal={true}
                 showsVerticalScrollIndicator={false}
-            />
+                />
+
+                
+
             <View style={{ borderTopWidth: 2, borderColor: 'black', width:width, height: height/8 }}>
             <View style={styles.tapBoton}>
                 <Text style = {styles.textoTap}>Total de compra:</Text>
@@ -82,7 +92,12 @@ export const screen2 = () => {
                     </TouchableOpacity>
                 </View>
             </View>
+        </SafeAreaView>*/
 
-        </SafeAreaView>
+        <View style = {{justifyContent: 'center', flex:1}}>
+            <Text style ={{color: 'black', fontSize: 20, textAlign: 'center'}}>
+                En mantenimiento, favor de esperar nuevas actualizaciones
+            </Text>
+        </View>
     )
 }

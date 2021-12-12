@@ -97,7 +97,7 @@ export const styles3 = StyleSheet.create({
     },
     titulo: {
 
-        fontSize: width/20, alignSelf: 'center', marginLeft: width/40, 
+        fontSize: width/20, alignSelf: 'center', marginLeft: width/40, color: 'black'
     },
     BotonIzq:{
         

@@ -6,19 +6,25 @@ import { TextInput } from 'react-native-gesture-handler';
 import Carousel from 'react-native-snap-carousel';
 import { useProductos } from '../hooks/useProductos';
 import { Buscador } from '../components/Buscador';
+import { useCatagorias } from '../hooks/useCatagorias';
 
 interface Props extends StackScreenProps<any, any> { };
 
 export const screen1 = ({ navigation }: Props) => {
 
     const {
-        categorias,
-        setCategorias,
         images,
-        setImages,
         width,
         height
     } = useProductos();
+    const {
+        categoria1,
+        categoria2,
+        categoria3,
+        categoria4,
+        categoria5,
+        categorias
+    }=useCatagorias();
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar
@@ -42,7 +48,12 @@ export const screen1 = ({ navigation }: Props) => {
                         data={categorias}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
-                            onPress={() => Alert.alert('Has seleccionado una categoria')}
+                            onPress={() => navigation.navigate('CategoriasScreen', {
+                                id: item.id,
+                                categoria: item.categoria,
+                                resource: item.resource,
+                                name: item.name
+                            })}
                             >
                                 <View>
                                     <Image
@@ -77,7 +88,12 @@ export const screen1 = ({ navigation }: Props) => {
                         itemWidth={300}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('screen3')}
+                            onPress={() => navigation.navigate('screen3', {
+                                id: item.id,
+                                image: item.image,
+                                description: item.description,
+                                price: item.price
+                            })}
                             >
                                 <Image
                                     key={index}
@@ -107,7 +123,12 @@ export const screen1 = ({ navigation }: Props) => {
                         itemWidth={300}
                         renderItem={({ item, index }) => (
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('screen3')}
+                            onPress={() => navigation.navigate('screen3', {
+                                id: item.id,
+                                image: item.image,
+                                description: item.description,
+                                price: item.price
+                            })}
                             >
                                 <Image
                                     key={index}
